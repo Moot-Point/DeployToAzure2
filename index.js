@@ -1,13 +1,13 @@
-var http = require("http");
-http.createServer(function (request, response) {
+var http = require('http');
 
-	// send the http header. statys: 200 = ok
-	// content tyoe: text/plain
-	response.writeHead(200, {'Content-Type': 'text/plain'});
+var server = http.createServer(function(request, response) {
 
-	// send the response body as "hello world"
-	response.end('Hello world\n');
-}).listen(8081);
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.end("Hello World! This is my first Node.js server");
 
-// console will print the message
-console.log('Server running at http://127.0.0.1:8081/');
+});
+
+var port = process.env.PORT || 3000;
+server.listen(port);
+
+console.log("Server running at http://localhost:%d", port);
